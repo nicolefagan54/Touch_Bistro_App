@@ -1,9 +1,23 @@
+using Microsoft.EntityFrameworkCore;
+using Touch_Bistro_App.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<TouchBistroContext>(options =>
+    options.UseSqlite("Data Source=TouchBistro.db"));
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+// Seed Database
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<TouchBistroContext>();
+    DbInitializer.Initialize(context);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

@@ -1,0 +1,39 @@
+@model IEnumerable<Touch_Bistro_App.Models.Table>
+
+@{
+    ViewData["Title"] = "Tables";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Touch Bistro - Tables</h1>
+    <p>Select a table to start or view an order.</p>
+</div>
+
+<div class="container">
+    <div class="row">
+        @foreach (var table in Model)
+        {
+            <div class="col-md-3 mb-4">
+                <a asp-action="Select" asp-route-id="@table.Id" class="text-decoration-none">
+                    <div class="card text-center h-100 table-card @(table.Status == "Free" ? "bg-success text-white" : table.Status == "Occupied" ? "bg-warning text-dark" : "bg-secondary text-white")">
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <h5 class="card-title">Table @table.Number</h5>
+                            <p class="card-text">@table.Status</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .table-card {
+        cursor: pointer;
+        transition: transform 0.2s;
+        height: 150px;
+    }
+    .table-card:hover {
+        transform: scale(1.05);
+    }
+</style>

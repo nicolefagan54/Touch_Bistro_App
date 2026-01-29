@@ -1,0 +1,54 @@
+@model Touch_Bistro_App.Models.Order
+
+@{
+    ViewData["Title"] = "Order Details";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header bg-dark text-white d-flex justify-content-between">
+                    <h4 class="mb-0">Order for Table @Model.TableId</h4>
+                    <span>@Model.CreatedAt.ToString("t")</span>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th class="text-center">Qty</th>
+                                <th class="text-end">Price</th>
+                                <th class="text-end">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Items)
+                            {
+                                <tr>
+                                    <td>@item.MenuItem.Name</td>
+                                    <td class="text-center">@item.Quantity</td>
+                                    <td class="text-end">@item.MenuItem.Price.ToString("C")</td>
+                                    <td class="text-end">@item.Total.ToString("C")</td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr class="fw-bold fs-5">
+                                <td colspan="3" class="text-end">Total:</td>
+                                <td class="text-end">@Model.TotalAmount.ToString("C")</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <a asp-controller="Menu" asp-action="Index" asp-route-orderId="@Model.Id" class="btn btn-secondary">Back to Menu</a>
+                    <form asp-action="Checkout" method="post">
+                        <input type="hidden" name="id" value="@Model.Id" />
+                        <button type="submit" class="btn btn-success btn-lg">Pay & Close Table</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

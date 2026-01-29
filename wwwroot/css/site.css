@@ -19,13 +19,28 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-color: #f8f9fa;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+/* Touch Bistro Clone Styles */
+.card {
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+    border: none;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+.card:hover { 
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.btn-lg {
+    padding: 1rem 2rem;
+    font-weight: 600;
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: 700;
+    color: #333;
 }
