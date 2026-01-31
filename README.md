@@ -2,83 +2,83 @@
 
 ASP.NET Core MVC application mimicking the TouchBistro POS system.
 
-## Features
+## Menu Management
 
-- **Interactive Menu**: Browse menu items by category (Mains, Sides, Drinks).
-- **Table Management**: Visual representation of table status (Occupied/Free) and detailed order views.
-- **Order Processing**: Real-time calculation of order totals including tax.
-- **Responsive Design**: Optimized for different screen sizes.
+- **Displays menu items** with names, prices, and categories.
+- **Allows users to add items** to an order.
 
-## Project Structure
+## Table Management
 
-```text
-Touch_Bistro_App/
-│
-├── Controllers/
-│   ├── MenuController.cs
-│   ├── TablesController.cs
-│   ├── OrdersController.cs
-│   └── HomeController.cs
-│
-├── Models/
-│   ├── MenuItem.cs
-│   ├── Table.cs
-│   ├── Order.cs
-│   └── OrderItem.cs
-│
-├── Views/
-│   ├── Menu/
-│   ├── Tables/
-│   ├── Orders/
-│   └── Home/
-│
-├── Data/ (Persistence Layer)
-│   ├── TouchBistroContext.cs
-│   ├── DbInitializer.cs
-│   └── Migrations/
-│
-├── wwwroot/
-│   ├── css/
-│   ├── js/
-│   └── screenshots/
-│
-├── appsettings.json
-├── Program.cs
-├── Touch_Bistro_App.csproj
-└── README.md
+- **Shows available and occupied tables.**
+- **Lets users select a table** to start an order.
+
+## Order Workflow
+
+- **Add/remove menu items.**
+- **View order totals.**
+- **Submit or clear orders.**
+
+## POS‑Style Navigation
+
+- **Clean, simple UI** inspired by TouchBistro’s layout.
+- **Fast switching** between menu, tables, and order screens.
+
+## 🗄️ Database & EF Core
+
+This project uses SQLite for lightweight local storage.
+
+### Running Migrations
+
+If you need to rebuild the database:
+
+```bash
+dotnet ef database update
 ```
 
-## Tech Stack
+To add a new migration:
 
-- **Framework**: ASP.NET Core MVC (.NET 10.0)
-- **Database**: Entity Framework Core with SQLite
-- **Styling**: Custom CSS & Bootstrap
-- **Tools**: Visual Studio / VS Code
+```bash
+dotnet ef migrations add MigrationName
+```
 
-## Getting Started
+## 🚀 Getting Started
 
-### Prerequisites
+### 1. Clone the Repository
 
-- [.NET 10.0 SDK](https://dotnet.microsoft.com/download)
+```bash
+git clone https://github.com/nicolefagan54/Touch_Bistro_App.git
+cd Touch_Bistro_App
+```
 
-### Installation
+### 2. Restore Dependencies
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/nicolefagan54/Touch_Bistro_App.git
-   cd Touch_Bistro_App
-   ```
+```bash
+dotnet restore
+```
 
-2. **Restore dependencies**
-   ```bash
-   dotnet restore
-   ```
+### 3. Run the Application
 
-3. **Run the application**
-   ```bash
-   dotnet run
-   ```
-   The application will be available at `http://localhost:5251` (or the port specified in the output).
+```bash
+dotnet run
+```
+
+The app will launch at: `https://localhost:5001` or `http://localhost:5251`
+
+## 📘 About This Project
+
+This application was created as part of a software development practicum to demonstrate:
+- MVC architecture
+- Database modeling
+- Restaurant workflow logic
+- UI/UX for POS systems
+- EF Core data persistence
+
+It is not a full production POS system, but a functional educational clone.
+
+## 📄 License
+
+This project is open for educational use.
+Feel free to fork, modify, and learn from it.
 
 ## Screenshots
 
